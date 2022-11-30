@@ -9,6 +9,14 @@
           </a>
         </li>
         <li>
+          こんにちは、test2さん！
+        </li>
+        <li>
+          <a href="{{ route('users.show') }}">
+            プロフィール
+          </a>
+        </li>
+        <li>
           <a href="{{ route('likes.index') }}">
             お気に入り一覧
           </a>
@@ -16,11 +24,6 @@
         <li>
           <a href="{{ route('users.exhibitions') }}">
             出品商品一覧
-          </a>
-        </li>
-        <li>
-          <a href="{{ route('users.show') }}">
-            プロフィール
           </a>
         </li>
         <li>ログアウト</li>
