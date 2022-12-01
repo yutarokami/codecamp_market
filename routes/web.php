@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ログイン関連
+Auth::routes();
+
 //// プロフィール関連 ////
 // プロフィール詳細
 Route::get('users/{user}', 'UserController@show')->name('users.show');
