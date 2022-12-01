@@ -9,7 +9,7 @@
           </a>
         </li>
         <li>
-          こんにちは、test2さん！
+          こんにちは、{{ Auth::user()->name }}さん！
         </li>
         <li>
           <a href="{{ route('users.show') }}">
@@ -26,7 +26,12 @@
             出品商品一覧
           </a>
         </li>
-        <li>ログアウト</li>
+        <li>
+          <form action="{{ route('logout') }}" method='post'>
+            @csrf
+            <input type='submit' value='ログアウト'>
+          </form>
+        </li>
     </ul>
 </header>
 @endsection
