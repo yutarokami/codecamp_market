@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    // ログイン時でないと開けない設定
+    public function __construct() {
+        $this->middleware('auth');    
+    }
+    
     // 新規出品
     public function create() {
         return view('items.create', [

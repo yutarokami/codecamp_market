@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    // ログイン時でないと開けない設定
+    public function __construct() {
+        $this->middleware('auth');    
+    }
+    
     // プロフィール編集
     public function edit() {
         return view('profile.edit', [

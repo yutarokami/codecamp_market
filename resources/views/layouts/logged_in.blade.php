@@ -12,17 +12,17 @@
           こんにちは、{{ Auth::user()->name }}さん！
         </li>
         <li>
-          <a href="{{ route('users.show') }}">
+          <a href="">
             プロフィール
           </a>
         </li>
         <li>
-          <a href="{{ route('likes.index') }}">
+          <a href="">
             お気に入り一覧
           </a>
         </li>
         <li>
-          <a href="{{ route('users.exhibitions') }}">
+          <a href="">
             出品商品一覧
           </a>
         </li>
