@@ -5,7 +5,7 @@
 @section('content')
   <h1>{{ $title }}</h1>
   <h2>商品追加フォーム</h2>
-  <form method='post' action="{{ route('items.store') }}">
+  <form method='post' action="{{ route('items.store') }}" enctype="multipart/form-data">
       @csrf
       <label>
           <div>

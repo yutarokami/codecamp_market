@@ -13,7 +13,7 @@ class ItemRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -33,8 +33,8 @@ class ItemRequest extends FormRequest
                 'required',
                 'file',
                 'image',
-                'mines:jpeg,jpg,png',
-                'dimensions:min_width:50, min_height:50, max_width:1000, max_height:1000',
+                'mimes:jpeg,jpg,png',
+                'dimensions:min_width:50,min_height:50,max_width:1000,max_height:1000',
             ],
         ];
     }

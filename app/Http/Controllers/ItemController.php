@@ -26,13 +26,22 @@ class ItemController extends Controller
     
     // 出品追加処理
     public function store(ItemRequest $request) {
+        // 画像投稿処理
+        $path = '';
+        $image = $request->file('image');
+        if( isset($image)===true ) {
+            // publicディスク(strage/app/public/)のphotosディレクトリに保存
+            $path = $image->store('photos', 'public');
+        }
+        
+        $category = Category::find($request->category_id);
         Item::create([
             'user_id' => \Auth::user()->id,
             'name' => $request->name,
             'description' => $request->description,
-            // 'category_id' => $request->category_id,
+            'category_id' => $category->id,
             'price' => $request->price,
-            'image' => '', // 仮置き
+            'image' => $path, // ファイルパスを保存
         ]);
 
         // 登録に成功した場合、該当の商品の詳細ページに遷移する
