@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// トップページ
+Route::view('/', 'top');
 
 // ログイン関連
 Auth::routes();
