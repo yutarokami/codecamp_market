@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Item;
+use App\Category;
+use App\Http\Requests\ItemRequest;
+
 class ItemController extends Controller
 {
     // ログイン時でないと開けない設定
@@ -13,9 +17,27 @@ class ItemController extends Controller
     
     // 新規出品
     public function create() {
+        $categories = \DB::table('categories')->get();
         return view('items.create', [
             'title' => '商品を出品',
+            'categories' => $categories,
         ]);
+    }
+    
+    // 出品追加処理
+    public function store(ItemRequest $request) {
+        Item::create([
+            'user_id' => \Auth::user()->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            // 'category_id' => $request->category_id,
+            'price' => $request->price,
+            'image' => '', // 仮置き
+        ]);
+
+        // 登録に成功した場合、該当の商品の詳細ページに遷移する
+        session()->flash('success', '出品完了しました');
+        return redirect()->route('items.show');
     }
     
     // 商品情報編集

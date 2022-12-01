@@ -38,6 +38,9 @@ Route::get('users/{user}/exhibitions', 'UserController@exhibitions')->name('user
 // 新規出品
 Route::get('items/create', 'ItemController@create')->name('items.create');
 
+// 新規出品追加処理
+Route::post('items/store', 'ItemController@store')->name('items.store');
+
 // 商品情報編集
 Route::get('items/{item}/edit', 'ItemController@edit')->name('items.edit');
 
