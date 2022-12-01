@@ -14,8 +14,8 @@ class RegisterController extends Controller
     // RegisterUsers トレイトを利用
     use RegistersUsers;
 
-    // ユーザー登録後はホーム画面に移動
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // ユーザー登録後は / に遷移
+    protected $redirectTo = '/';
 
     // 未ログインであることを確認
     public function __construct()
