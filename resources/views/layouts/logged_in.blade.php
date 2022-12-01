@@ -5,7 +5,7 @@
     <ul class="header_nav">
         <li>
           <a href="/">
-            トップページ
+            Market
           </a>
         </li>
         <li>
