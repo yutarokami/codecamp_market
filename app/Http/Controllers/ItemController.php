@@ -34,12 +34,13 @@ class ItemController extends Controller
             $path = $image->store('photos', 'public');
         }
         
-        $category = Category::find($request->category_id);
+        $category = $request->categories;
+        dd($category);
         Item::create([
             'user_id' => \Auth::user()->id,
             'name' => $request->name,
             'description' => $request->description,
-            'category_id' => $category->id,
+            'category_id' => $category,
             'price' => $request->price,
             'image' => $path, // ファイルパスを保存
         ]);

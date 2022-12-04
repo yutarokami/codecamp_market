@@ -15,8 +15,11 @@
 //     return view('welcome');
 // });
 
-// トップページ
+// トップページ(未ログイン時)
 Route::view('/', 'top');
+
+// トップページ(ログイン時)
+Route::view('/home', 'top_login');
 
 // ログイン関連
 Auth::routes();

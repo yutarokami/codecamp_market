@@ -15,7 +15,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     // ログイン後のリダイレクト先を変更
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     // ログアウト処理以外では、未ログインであることを確認
     public function __construct()
