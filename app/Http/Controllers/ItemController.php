@@ -34,8 +34,7 @@ class ItemController extends Controller
             $path = $image->store('photos', 'public');
         }
         
-        $category = $request->categories;
-        dd($category);
+        $category = $request->category;
         Item::create([
             'user_id' => \Auth::user()->id,
             'name' => $request->name,
