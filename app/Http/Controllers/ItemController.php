@@ -35,7 +35,7 @@ class ItemController extends Controller
         }
         
         $category = $request->category;
-        Item::create([
+        $item = Item::create([
             'user_id' => \Auth::user()->id,
             'name' => $request->name,
             'description' => $request->description,
@@ -43,10 +43,10 @@ class ItemController extends Controller
             'price' => $request->price,
             'image' => $path, // ファイルパスを保存
         ]);
-
+        
         // 登録に成功した場合、該当の商品の詳細ページに遷移する
         session()->flash('success', '出品完了しました');
-        return redirect()->route('items.show');
+        return redirect()->route('items.show',$item);
     }
     
     // 商品情報編集
@@ -64,9 +64,20 @@ class ItemController extends Controller
     }
     
     // 商品詳細
-    public function show() {
+    public function show($id) {
+        $item = Item::find($id);
+        $name = $item->name;
+        $image = $item->image;
+        $category = Category::where('id',$item->category_id)->value('name');
+        $price = $item->price;
+        $description = $item->description;
         return view('items.show', [
             'title' => '商品詳細',
+            'name' => $name,
+            'image' => $image,
+            'category' => $category,
+            'price' => $price,
+            'description' => $description,
         ]);
     }
     
