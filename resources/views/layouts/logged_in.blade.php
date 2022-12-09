@@ -4,7 +4,7 @@
 <header>
     <ul class="header_nav">
         <li>
-          <a href="/">
+          <a href="/home">
             Market
           </a>
         </li>
@@ -12,7 +12,7 @@
           こんにちは、{{ Auth::user()->name }}さん！
         </li>
         <li>
-          <a href="">
+          <a href="{{ url("/users/" . \Auth::user()->id) }}">
             プロフィール
           </a>
         </li>

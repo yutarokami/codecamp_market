@@ -16,10 +16,10 @@
 // });
 
 // トップページ(未ログイン時)
-Route::get('/', 'TopController@signin');
+Route::view('/', 'top_signin');
 
 // トップページ(ログイン時)
-Route::view('/home', 'TopController@login');
+Route::view('/home', 'top_login');
 
 // ログイン関連
 Auth::routes();
