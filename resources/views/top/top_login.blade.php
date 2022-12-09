@@ -3,8 +3,12 @@
 @section('content')
   <p>息をするように、買おう。</p>
   
-  <!--新規出品ページへのリンク仮-->
-  <a href="items/create">
-    新規出品(仮)
-  </a>
+  <div>
+    <a href="items/create">
+      新規出品
+    </a>
+  </div>
+  <div>
+    
+  </div>
 @endsection
