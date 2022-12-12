@@ -12,4 +12,8 @@ class Item extends Model
     public function category() {
         return $this->hasOne('App\Category', 'category_id');
     }
+    
+    public function user() {
+        return $this->hasOne('App\User', 'user_id');
+    }
 }

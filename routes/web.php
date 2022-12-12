@@ -19,7 +19,7 @@
 Route::view('/', 'top_signin');
 
 // トップページ(ログイン時)
-Route::view('/home', 'top_login');
+Route::get('/home', 'LoginController@top_login')->name('top_login');
 
 // ログイン関連
 Auth::routes();

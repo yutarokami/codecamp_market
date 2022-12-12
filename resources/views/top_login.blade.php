@@ -9,6 +9,10 @@
     </a>
   </div>
   <div>
-    
+    @forelse($items as $item)
+      <p>{{ $item->name }}</p>
+    @empty
+      <p>商品はありません。</p>
+    @endforelse
   </div>
 @endsection
