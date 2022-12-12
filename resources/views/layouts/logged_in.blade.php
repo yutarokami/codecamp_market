@@ -22,7 +22,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="{{ url("/users/" . \Auth::user()->id . "/exhibitions") }}">
             出品商品一覧
           </a>
         </li>

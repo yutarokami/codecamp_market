@@ -22,4 +22,16 @@ class UserController extends Controller
             'order_items' => $order_items,
         ]);
     }
+    
+    // 出品商品一覧
+    public function exhibitions($id) {
+        $user = User::find($id);
+        $user_name = $user->name;
+        $items = Item::where('user_id', $id)->latest()->get();
+        
+        return view('users.exhibitions', [
+            'title' => $user_name . 'の出品商品一覧',
+            'items' => $items,
+        ]);
+    }
 }

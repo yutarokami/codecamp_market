@@ -10,10 +10,10 @@ class Order extends Model
     protected $fillable = ['user_id', 'item_id'];
     
     public function user() {
-        return $this->hasOne('App\User', 'user_id');
+        return $this->hasOne('App\User');
     }
     
     public function item() {
-        return $this->hasOne('App\Item', 'item_id');
+        return $this->hasOne('App\Item');
     }
 }
