@@ -16,8 +16,8 @@
       @else
         <img src="{{ asset('images/no_image.png') }}">
       @endif
-      <a href="{{ route('items.edit', $item) }}">編集</a>
-      <a href="{{ route('items.edit_image', $item) }}">画像を変更</a>
+      <a href="{{ route('items.edit', $item->id) }}">編集</a>
+      <a href="{{ route('items.edit_image', $item->image) }}">画像を変更</a>
       
       <p>商品名:{{ $item->name }}</p>
       <p>{{ $item->price }} 円</p>

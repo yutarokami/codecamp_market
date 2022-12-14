@@ -47,6 +47,12 @@ Route::post('items/store', 'ItemController@store')->name('items.store');
 // 商品情報編集
 Route::get('items/{item}/edit', 'ItemController@edit')->name('items.edit');
 
+// 商品情報編集機能
+Route::patch('items/{item}', 'ItemController@update')->name('items.update');
+
+// 商品情報削除機能
+Route::delete('items/{item}', 'ItemController@destroy')->name('items.destroy');
+
 // 商品画像変更
 Route::get('items/{item}/edit_image', 'ItemController@editImage')->name('items.edit_image');
 

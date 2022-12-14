@@ -49,11 +49,27 @@ class ItemController extends Controller
         return redirect()->route('items.show',$item);
     }
     
-    // 商品情報編集
-    public function edit() {
+    // 商品情報編集画面
+    public function edit($id) {
+        $item = Item::find($id);
+        $category = Category::where('id',$item->category_id)->value('name');
         return view('items.edit', [
             'title' => '商品情報の編集',
+            'name' => $item->name,
+            'description' => $item->description,
+            'category' => $category,
+            'price' => $item->price,
         ]);
+    }
+    
+    // 商品情報編集機能
+    public function update(ItemRequest $request) {
+        
+    }
+    
+    // 商品情報削除機能
+    public function destroy() {
+        
     }
     
     // 商品画像変更
