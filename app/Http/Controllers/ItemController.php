@@ -52,12 +52,15 @@ class ItemController extends Controller
     // 商品情報編集画面
     public function edit($id) {
         $item = Item::find($id);
-        $category = Category::where('id',$item->category_id)->value('name');
+        $category_default = Category::where('id',$item->category_id)->first();
+        $categories = \DB::table('categories')->whereNotIn('id',[$category_default->id])->get();
         return view('items.edit', [
             'title' => '商品情報の編集',
+            'item' => $item,
             'name' => $item->name,
             'description' => $item->description,
-            'category' => $category,
+            'categories' => $categories,
+            'category_default' => $category_default,
             'price' => $item->price,
         ]);
     }
