@@ -31,5 +31,4 @@
     </div>
     <input type='submit' value='出品'>
   </form>
-  
 @endsection

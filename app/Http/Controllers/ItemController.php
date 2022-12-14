@@ -54,6 +54,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         $category_default = Category::where('id',$item->category_id)->first();
         $categories = \DB::table('categories')->whereNotIn('id',[$category_default->id])->get();
+        
         return view('items.edit', [
             'title' => '商品情報の編集',
             'item' => $item,
@@ -66,8 +67,11 @@ class ItemController extends Controller
     }
     
     // 商品情報編集機能
-    public function update(ItemRequest $request) {
-        
+    public function update($id, ItemRequest $request) {
+        $item = Item::find($id);
+        $item->update($request->except(['image']))->all();
+        session()->flash('success', '商品情報を編集しました');
+        return redirect()->route('items.show');
     }
     
     // 商品情報削除機能
