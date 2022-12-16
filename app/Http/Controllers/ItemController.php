@@ -8,6 +8,7 @@ use App\Item;
 use App\Category;
 use App\Http\Requests\ItemRequest;
 use App\Http\Requests\ItemUpdateRequest;
+use App\Http\Requests\ItemImageUpdateRequest;
 
 class ItemController extends Controller
 {
@@ -84,10 +85,38 @@ class ItemController extends Controller
     }
     
     // 商品画像変更
-    public function editImage() {
+    public function editImage($id) {
+        $item = Item::find($id);
         return view('items.edit_image', [
             'title' => '商品画像の変更',
+            'item' => $item,
         ]);
+    }
+    
+    // 商品画像変更機能
+    public function updateImage($id, ItemImageUpdateRequest $request) {
+        // 画像投稿処理
+        $path = '';
+        $image = $request->file('image');
+        
+        if( isset($image) === true ) {
+            // publicディスク(storage/app/public/)のphotosディレクトリに保存
+            $path = $image->store('photos', 'public');
+        }
+        
+        $item = Item::find($id);
+        
+        // 変更前の画像を削除
+        if($item->image !== '') {
+            \Storage::disk('public')->delete(\Storage::url($item->image));
+        }
+        
+        $item->update([
+           'image' => $path, // ファイルを保存 
+        ]);
+        
+        session()->flash('success', '画像を変更しました');
+        return redirect()->route('items.show', $id);
     }
     
     // 商品詳細

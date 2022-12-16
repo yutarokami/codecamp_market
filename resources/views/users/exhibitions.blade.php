@@ -22,7 +22,7 @@
       <p>カテゴリ:{{ $item->category_id }} {{ $item->created_at }}</p>
       
       <a href="{{ route('items.edit', $item->id) }}">編集</a>
-      <a href="{{ route('items.edit_image', $item->image) }}">画像を変更</a>
+      <a href="{{ route('items.edit_image', $item) }}">画像を変更</a>
       <form method='post' class='delete' action="{{ route('items.destroy', $item) }}">
         @csrf
         @method('delete')

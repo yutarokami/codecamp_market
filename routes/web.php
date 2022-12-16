@@ -56,6 +56,9 @@ Route::delete('items/{item}', 'ItemController@destroy')->name('items.destroy');
 // 商品画像変更
 Route::get('items/{item}/edit_image', 'ItemController@editImage')->name('items.edit_image');
 
+// 商品画像変更機能
+Route::patch('items/{item}', 'ItemController@updateImage')->name('items.update_image');
+
 //// 購入関連 ////
 // 商品詳細
 Route::get('items/{item}', 'ItemController@show')->name('items.show');
