@@ -76,8 +76,11 @@ class ItemController extends Controller
     }
     
     // 商品情報削除機能
-    public function destroy() {
-        
+    public function destroy($id) {
+        $item = Item::find($id);
+        $item->delete();
+        session()->flash('success', '商品情報を削除しました');
+        return redirect()->route('users.exhibitions', \Auth::user()->id);
     }
     
     // 商品画像変更

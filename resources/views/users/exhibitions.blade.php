@@ -16,12 +16,18 @@
       @else
         <img src="{{ asset('images/no_image.png') }}">
       @endif
-      <a href="{{ route('items.edit', $item->id) }}">編集</a>
-      <a href="{{ route('items.edit_image', $item->image) }}">画像を変更</a>
       
       <p>商品名:{{ $item->name }}</p>
       <p>{{ $item->price }} 円</p>
       <p>カテゴリ:{{ $item->category_id }} {{ $item->created_at }}</p>
+      
+      <a href="{{ route('items.edit', $item->id) }}">編集</a>
+      <a href="{{ route('items.edit_image', $item->image) }}">画像を変更</a>
+      <form method='post' class='delete' action="{{ route('items.destroy', $item) }}">
+        @csrf
+        @method('delete')
+        <input type='submit' value='削除'>
+      </form>
     @empty
       <p>出品している商品はありません。</p>
     @endforelse
