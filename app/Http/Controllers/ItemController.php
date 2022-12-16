@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Category;
 use App\Http\Requests\ItemRequest;
+use App\Http\Requests\ItemUpdateRequest;
 
 class ItemController extends Controller
 {
@@ -67,11 +68,11 @@ class ItemController extends Controller
     }
     
     // 商品情報編集機能
-    public function update($id, ItemRequest $request) {
+    public function update($id, ItemUpdateRequest $request) {
         $item = Item::find($id);
-        $item->update($request->except(['image']))->all();
+        $item->update($request->except(['image']));
         session()->flash('success', '商品情報を編集しました');
-        return redirect()->route('items.show');
+        return redirect()->route('items.show', $id);
     }
     
     // 商品情報削除機能
