@@ -25,7 +25,8 @@
   <h2>購入履歴</h2>
   <div>
       @forelse($order_items as $order_item)
-        <p>{{ $order_item->name }}</p>
+        <a href="{{ route('items.show', $order_item) }}">{{ $order_item->name }}</a>:
+        {{ $order_item->price }}円 出品者 {{ $order_item->name }}さん
       @empty
         <p>購入した商品はありません。</p>
       @endforelse

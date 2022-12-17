@@ -13,11 +13,11 @@ class Item extends Model
         return $this->hasOne('App\Category', 'id', 'category_id');
     }
     
-    public function user() {
+    public function exhibitedUser() {
         return $this->hasOne('App\User');
     }
     
-    public function orderedItem() {
+    public function orderItem() {
         return $this->hasOne('App\Order');
     }
     
@@ -25,5 +25,9 @@ class Item extends Model
         // 当該商品が売り切れならば$ordered_item_result=1,そうでなければ$ordered_item_result=0
         $ordered_item_result = Order::where('item_id', $this->id)->count();
         return $ordered_item_result;
+    }
+    
+    public function likeItems() {
+        return $this->hasMany('App\Like');
     }
 }

@@ -9,7 +9,7 @@ class Category extends Model
     // $fillableの設定
     protected $fillable = ['name'];
     
-    public function items() {
+    public function categoryOfItems() {
         return $this->hasMany('App\Item');
     }
 }

@@ -9,11 +9,11 @@ class Order extends Model
     // $fillableの設定
     protected $fillable = ['user_id', 'item_id'];
     
-    public function user() {
+    public function orderedUser() {
         return $this->hasOne('App\User');
     }
     
-    public function item() {
+    public function orderedItem() {
         return $this->hasOne('App\Item');
     }
 }

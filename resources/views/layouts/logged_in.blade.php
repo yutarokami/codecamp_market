@@ -17,7 +17,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="{{ route('likes.index') }}">
             お気に入り一覧
           </a>
         </li>
