@@ -32,6 +32,10 @@
         <p>説明</p>
         <p>{{ $item->description }}</p>
       </div>
+      <div>
+        <p>ステータス</p>
+        <p>{{ $item->isOrderedBy($item) ? '売り切れ' : '出品中' }}</p>
+      </div>
     @empty
       <p>商品はありません。</p>
     @endforelse

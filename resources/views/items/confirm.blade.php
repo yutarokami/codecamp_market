@@ -1,7 +1,9 @@
 @extends('layouts.logged_in')
  
 @section('content')
-  <form action="{{ route('items.finish', $item) }}" method='get'>
+  <form action="{{ route('items.toggle_order', $item) }}" method='post'>
+    @csrf
+    @method('patch')
     <div>
       <h2>商品名</h2>
       <p>{{ $item->name }}</p>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Item;
 use App\Category;
+use App\Order;
 use App\Http\Requests\ItemRequest;
 use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Requests\ItemImageUpdateRequest;
@@ -122,11 +123,7 @@ class ItemController extends Controller
     // 商品詳細
     public function show($id) {
         $item = Item::find($id);
-        // $name = $item->name;
-        // $image = $item->name;
         $category = Category::where('id',$item->category_id)->value('name');
-        // $price = $item->price;
-        // $description = $item->description;
         return view('items.show', [
             'title' => '商品詳細',
             'item' => $item,
@@ -142,6 +139,24 @@ class ItemController extends Controller
             'item' =>$item,
             'category' => $category,
         ]);
+    }
+    
+    // 購入処理
+    public function toggleOrder($id) {
+        $item = Item::find($id);
+        
+        if($item->isOrderedBy()===1) {
+            // 売り切れの場合
+            \Session::flash('error', '申し訳ありません。ちょっと前に売り切れました。');
+            return redirect()->route('items.show', $id);
+        } else {
+            // 出品中の場合
+            Order::create([
+               'user_id' => \Auth::user()->id,
+               'item_id' => $id,
+            ]);
+            return redirect()->route('items.finish', $id);
+        }
     }
     
     // 購入確定

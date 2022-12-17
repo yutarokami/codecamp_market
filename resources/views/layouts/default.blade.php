@@ -19,6 +19,13 @@
             {{ \Session::get('success') }}
         </div>
     @endif
+    
+    {{-- 失敗メッセージを出力 --}}
+    @if (\Session::has('error'))
+        <div class="error">
+            {{ \Session::get('error') }}
+        </div>
+    @endif
  
     @yield('content')
 </body>

@@ -72,6 +72,9 @@ Route::get('items/{item}', 'ItemController@show')->name('items.show');
 // 購入確認
 Route::get('items/{item}/confirm', 'ItemController@confirm')->name('items.confirm');
 
+// 購入処理
+Route::patch('items/{item}/toggle_order', 'ItemController@toggleOrder')->name('items.toggle_order');
+
 // 購入確定
 Route::get('items/{item}/finish', 'ItemController@finish')->name('items.finish');
 

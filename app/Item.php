@@ -17,7 +17,13 @@ class Item extends Model
         return $this->hasOne('App\User');
     }
     
-    public function orders() {
-        return $this->hasMany('App\Order');
+    public function orderedItem() {
+        return $this->hasOne('App\Order');
+    }
+    
+    public function isOrderedBy() {
+        // 当該商品が売り切れならば$ordered_item_result=1,そうでなければ$ordered_item_result=0
+        $ordered_item_result = Order::where('item_id', $this->id)->count();
+        return $ordered_item_result;
     }
 }
