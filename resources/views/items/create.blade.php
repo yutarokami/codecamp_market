@@ -20,8 +20,7 @@
             商品説明：
           </div>
           <div>
-            <textarea name='description' rows='10' cols='50'>
-            </textarea>
+            <textarea name='description' rows='10' cols='50'></textarea>
           </div>
       </label>
       <label>

@@ -5,7 +5,7 @@
 @section('content')
   <h1>{{ $title }}</h1>
   <div>
-    <a href="items/create">
+    <a href="{{ route('items.create') }}">
       新規出品
     </a>
   </div>

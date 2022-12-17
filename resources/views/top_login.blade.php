@@ -4,7 +4,7 @@
   <p>息をするように、買おう。</p>
   
   <div>
-    <a href="items/create">
+    <a href="{{ route('items.create') }}">
       新規出品
     </a>
   </div>
@@ -16,7 +16,9 @@
       </div>
       <div>
         <p>画像</p>
-        <img src="{{ asset('storage/' . $item->image) }}">
+        <a href="{{ route('items.show' , $item->id) }}">
+          <img src="{{ asset('storage/' . $item->image) }}">
+        </a>
       </div>
       <div>
         <p>カテゴリ</p>

@@ -122,32 +122,36 @@ class ItemController extends Controller
     // 商品詳細
     public function show($id) {
         $item = Item::find($id);
-        $name = $item->name;
-        $image = $item->image;
+        // $name = $item->name;
+        // $image = $item->name;
         $category = Category::where('id',$item->category_id)->value('name');
-        $price = $item->price;
-        $description = $item->description;
+        // $price = $item->price;
+        // $description = $item->description;
         return view('items.show', [
             'title' => '商品詳細',
-            'name' => $name,
-            'image' => $image,
+            'item' => $item,
             'category' => $category,
-            'price' => $price,
-            'description' => $description,
         ]);
     }
     
     // 購入確認
-    public function confirm() {
+    public function confirm($id) {
+        $item = Item::find($id);
+        $category = Category::where('id',$item->category_id)->value('name');
         return view('items.confirm', [
-            'title' => '',
+            'item' =>$item,
+            'category' => $category,
         ]);
     }
     
     // 購入確定
-    public function finish() {
+    public function finish($id) {
+        $item = Item::find($id);
+        $category = Category::where('id',$item->category_id)->value('name');
         return view('items.finish', [
             'title' => 'ご購入ありがとうございました。',
+            'item' =>$item,
+            'category' => $category,
         ]);
     }
 }
