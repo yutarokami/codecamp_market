@@ -10,7 +10,7 @@ class Item extends Model
     protected $fillable = ['user_id', 'name', 'description', 'category_id', 'price', 'image'];
     
     public function category() {
-        return $this->hasOne('App\Category');
+        return $this->hasOne('App\Category', 'id', 'category_id');
     }
     
     public function user() {

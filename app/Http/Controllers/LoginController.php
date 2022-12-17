@@ -7,12 +7,10 @@ use App\Item;
 
 class LoginController extends Controller
 {
-    public function top_login() {
-        $user = \Auth::user()->get('id');
-        $items = Item::whereNotIn('user_id', $user)->latest();
-        // dd($items);
+    public function topLogin() {
+        $user = \Auth::user();
+        $items = Item::with('category')->whereNotIn('user_id', [$user->id])->latest()->get();
         return view('top_login', [
-            'user' => $user,
             'items' => $items,
         ]);
     }

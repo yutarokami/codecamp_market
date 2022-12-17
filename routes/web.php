@@ -19,7 +19,7 @@
 Route::view('/', 'top_signin');
 
 // トップページ(ログイン時)
-Route::get('/home', 'LoginController@top_login')->name('top_login');
+Route::get('/home', 'LoginController@topLogin')->name('top_login');
 
 // ログイン関連
 Auth::routes();
@@ -31,8 +31,14 @@ Route::get('users/{user}', 'UserController@show')->name('users.show');
 // プロフィール編集
 Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
 
+// プロフィール編集機能
+Route::patch('profile/edit', 'ProfileController@update')->name('profile.update');
+
 // プロフィール画像編集
 Route::get('profile/edit_image', 'ProfileController@editImage')->name('profile.edit_image');
+
+// プロフィール画像編集機能
+Route::patch('profile/edit_image', 'ProfileController@updateImage')->name('profile.update_image');
 
 //// 出品関連 ////
 // 出品商品一覧

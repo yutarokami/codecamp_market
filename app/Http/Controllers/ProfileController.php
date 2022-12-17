@@ -13,8 +13,10 @@ class ProfileController extends Controller
     
     // プロフィール編集
     public function edit() {
+        $user = \Auth::user();
         return view('profile.edit', [
             'title' => 'プロフィール編集',
+            'user' => $user,
         ]);
     }
     
