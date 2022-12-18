@@ -81,3 +81,6 @@ Route::get('items/{item}/finish', 'ItemController@finish')->name('items.finish')
 //// そのほか ////
 // お気に入り一覧
 Route::get('likes', 'LikeController@index')->name('likes.index');
+
+// お気に入り追加処理
+Route::patch('items/{item}/toggle_like', 'ItemController@toggleLike')->name('items.toggle_like');

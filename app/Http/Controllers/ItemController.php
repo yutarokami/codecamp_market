@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Category;
 use App\Order;
+use App\Like;
 use App\Http\Requests\ItemRequest;
 use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Requests\ItemImageUpdateRequest;
@@ -168,5 +169,25 @@ class ItemController extends Controller
             'item' =>$item,
             'category' => $category,
         ]);
+    }
+    
+    // お気に入り追加処理
+    public function toggleLike($id) {
+        $user = \Auth::user();
+        $item = Item::find($id);
+        
+        if($item->isLikedBy($user)) {
+            // お気に入りの取り消し
+            $item->likeItems->where('user_id', $user->id)->first()->delete();
+            \Session::flash('success', 'お気に入りを取り消しました');
+        } else {
+            // お気に入りを設定
+            Like::create([
+               'user_id' => $user->id,
+               'item_id' => $item->id,
+            ]);
+            \Session::flash('success', 'お気に入りしました');
+        }
+        return redirect()->route('top_login');
     }
 }

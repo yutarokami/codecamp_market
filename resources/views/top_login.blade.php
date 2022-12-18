@@ -28,6 +28,16 @@
         <p>価格</p>
         <p>{{ $item->price }}</p>
       </div>
+      
+      <div>
+        <p>お気に入り</p>
+        <a class='like_button'>{{ $item->isLikedBy(Auth::user()) ? '済' : '未' }}</a>
+        <form method='post' action="{{ route('items.toggle_like', $item) }}">
+          @csrf
+          @method('patch')
+        </form>
+      </div>
+      
       <div>
         <p>説明</p>
         <p>{{ $item->description }}</p>
@@ -41,5 +51,14 @@
     @endforelse
   </div>
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    /* global $ */
+    $('.like_button').each(function(){
+      $(this).on('click', function(){
+        $(this).next().submit();
+      });
+    });
+  </script>
   
 @endsection
