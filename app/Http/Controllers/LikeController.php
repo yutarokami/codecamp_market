@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Like;
 use App\Category;
+use App\Item;
+use App\Order;
 
 class LikeController extends Controller
 {
@@ -16,12 +18,10 @@ class LikeController extends Controller
     // お気に入り一覧
     public function index() {
         $user = \Auth::user();
-        $items = Like::where('user_id', $user->id)->latest()->get();
-        // $category = ;
+        $items = $user->likeItems;
         return view('likes.index', [
             'title' => 'お気に入り一覧',
             'items' => $items,
-            // 'category' => $category,
         ]);
     }
 }

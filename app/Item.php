@@ -31,6 +31,10 @@ class Item extends Model
         return $this->hasMany('App\Like');
     }
     
+    public function likedUsers() {
+        return $this->belongsToMany('App\User','likes');
+    }
+    
     // 特定のユーザーが、各商品に対しお気に入りしているかチェックするメソッド
     public function isLikedBy($user) {
         // お気に入りされている商品に紐づくuser_idを抜き出す

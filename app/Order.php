@@ -16,4 +16,8 @@ class Order extends Model
     public function orderedItem() {
         return $this->hasOne('App\Item');
     }
+    
+    public function orderedLikes() {
+        return $this->hasOneThrough('App\Like', 'App\Item');
+    }
 }

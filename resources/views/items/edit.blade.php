@@ -5,20 +5,20 @@
 @section('content')
   <h1>{{ $title }}</h1>
   <h2>商品追加フォーム</h2>
-  <form action="{{ route('items.update', $item->id) }}" method='post'>
+  <form action="{{ route('items.update', $item) }}" method='post'>
     @csrf
     @method('patch')
     <div>
       商品名:</br> 
-      <input type='text' name='name' value={{$name}}>
+      <input type='text' name='name' value={{ $item->name }}>
     </div>
     <div>
       商品説明:</br> 
-      <textarea name='description' rows='5' cols='40'>{{$description}}</textarea>
+      <textarea name='description' rows='5' cols='40'>{{ $item->description }}</textarea>
     </div>
     <div>
       価格:</br> 
-      <input type='text' name='price' value={{$price}}>
+      <input type='text' name='price' value={{ $item->price }}>
     </div>
     <div>
       カテゴリー:</br> 

@@ -62,11 +62,8 @@ class ItemController extends Controller
         return view('items.edit', [
             'title' => '商品情報の編集',
             'item' => $item,
-            'name' => $item->name,
-            'description' => $item->description,
             'categories' => $categories,
             'category_default' => $category_default,
-            'price' => $item->price,
         ]);
     }
     
