@@ -10,7 +10,7 @@ class Order extends Model
     protected $fillable = ['user_id', 'item_id'];
     
     public function orderedUser() {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
     
     public function orderedItem() {

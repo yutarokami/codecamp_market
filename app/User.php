@@ -40,6 +40,9 @@ class User extends Authenticatable
     public function orders() {
         return $this->hasMany('App\Order');
     }
+    public function orderItems() {
+        return $this->belongsToMany('App\Item', 'orders');
+    }
     
     public function items() {
         return $this->hasMany('App\Item');
@@ -51,5 +54,9 @@ class User extends Authenticatable
     
     public function likeItems() {
         return $this->belongsToMany('App\Item', 'likes');
+    }
+    
+    public function orderCategories() {
+        return $this->belongsToMany('App\Category', 'orders');
     }
 }

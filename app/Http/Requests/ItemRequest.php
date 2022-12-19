@@ -27,14 +27,14 @@ class ItemRequest extends FormRequest
             // バリデーションの内容を設定
             'name' => ['required', 'max:255'],
             'description' => ['required', 'max:1000'],
-            'category' => ['required'],
-            'price' => ['required', 'digits_between:1,7'],
+            'category_id' => ['required','exists:categories,id'],
+            'price' => ['required', 'integer', 'between:1,1000000'],
             'image' => [
                 'required',
                 'file',
                 'image',
                 'mimes:jpeg,jpg,png',
-                'dimensions:min_width:50,min_height:50,max_width:1000,max_height:1000',
+                'dimensions:min_width=50,min_height=50,max_width=1000,max_height=1000',
             ],
         ];
     }

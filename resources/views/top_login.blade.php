@@ -17,7 +17,7 @@
       <div>
         <p>画像</p>
         <a href="{{ route('items.show' , $item->id) }}">
-          <img src="{{ asset('storage/' . $item->image) }}">
+          <img loading='lazy' src="{{ asset('storage/' . $item->image) }}">
         </a>
       </div>
       <div>

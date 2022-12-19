@@ -27,8 +27,8 @@ class ItemUpdateRequest extends FormRequest
             // バリデーションの内容を設定
             'name' => ['required', 'max:255'],
             'description' => ['required', 'max:1000'],
-            'category' => ['required'],
-            'price' => ['required', 'digits_between:1,7'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'price' => ['required', 'integer', 'between:1,1000000'],
         ];
     }
 }

@@ -11,15 +11,18 @@
   </div>
   <div>
     @forelse($items as $item)
-      @if($item->image !== '')
-        <img src="{{ asset('storage/' . $item->image) }}">
-      @else
-        <img src="{{ asset('images/no_image.png') }}">
-      @endif
-      
+      <a href="{{ route('items.show' , $item->id) }}">
+        @if($item->image !== '')
+          <img src="{{ asset('storage/' . $item->image) }}">
+        @else
+          <img src="{{ asset('images/no_image.png') }}">
+        @endif
+      </a>
       <p>商品名:{{ $item->name }}</p>
       <p>{{ $item->price }} 円</p>
-      <p>カテゴリ:{{ $item->category_id }} {{ $item->created_at }}</p>
+      <p>カテゴリ:{{ $item->category->name }} {{ $item->created_at }}</p>
+      <p>ステータス</p>
+      <p>{{ $item->isOrderedBy($item) ? '売り切れ' : '出品中' }}</p>
       
       <a href="{{ route('items.edit', $item->id) }}">編集</a>
       <a href="{{ route('items.edit_image', $item) }}">画像を変更</a>

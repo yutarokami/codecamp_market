@@ -7,6 +7,7 @@ use App\Like;
 use App\Category;
 use App\Item;
 use App\Order;
+use App\User;
 
 class LikeController extends Controller
 {
@@ -18,7 +19,9 @@ class LikeController extends Controller
     // お気に入り一覧
     public function index() {
         $user = \Auth::user();
-        $items = $user->likeItems;
+        // itemsテーブルのcreated_atの新しい順ではなく、likesテーブルのにしたい
+        $items = $user->likeitems()->latest('likes.created_at')->get();//->sortByDesc('likes.created_at');
+        // dd($items);
         return view('likes.index', [
             'title' => 'お気に入り一覧',
             'items' => $items,

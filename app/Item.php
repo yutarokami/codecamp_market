@@ -14,7 +14,7 @@ class Item extends Model
     }
     
     public function exhibitedUser() {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
     
     public function orderItem() {

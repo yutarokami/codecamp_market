@@ -22,10 +22,13 @@
     </div>
     <div>
       カテゴリー:</br> 
-      <select name='category'>
-        <option value="{{ $category_default->id }}">{{ $category_default->name }}</option>
+      <select name='category_id'>
         @foreach($categories as $category)
-          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @if($item->category_id === $category->id)
+            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+          @else
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endif
         @endforeach
       </select>
     </div>

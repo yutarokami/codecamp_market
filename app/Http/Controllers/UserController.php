@@ -12,13 +12,11 @@ class UserController extends Controller
     public function show($id) {
         $user = User::find($id);
         $item_amount = Item::where('user_id', $id)->count();
-        $orders = Order::where('user_id', \Auth::user()->id)->value('item_id');
-        $order_items = Item::where('id', $orders)->get();
+
         return view('users.show', [
             'title' => 'プロフィール',
             'user' => $user,
             'item_amount' => $item_amount,
-            'order_items' => $order_items,
         ]);
     }
     
