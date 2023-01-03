@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <!--Bootstrapの導入-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
