@@ -2,17 +2,18 @@
  
 @section('header')
 <header>
-    <ul class="header_nav">
-        <li>
-          <a href="{{ route('register') }}">
-            ユーザー登録
-          </a>
-        </li>
-        <li>
-          <a href="{{ route('login') }}">
-            ログイン
-          </a>
-        </li>
-    </ul>
+  <h1>Cookcamp Market</h1>
+  <ul class="header_nav">
+    <li>
+      <a href="{{ route('register') }}">
+        ユーザー登録
+      </a>
+    </li>
+    <li>
+      <a href="{{ route('login') }}">
+        ログイン
+      </a>
+    </li>
+  </ul>
 </header>
 @endsection
