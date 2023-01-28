@@ -4,7 +4,7 @@
 <header>
     <ul class="header_nav">
         <li>
-          <a href="/home">
+          <a href="{{ url("/home") }}">
             Market
           </a>
         </li>
